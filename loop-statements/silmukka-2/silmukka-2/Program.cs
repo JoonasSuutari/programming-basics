@@ -6,7 +6,7 @@ namespace silmukka_2
     {
         static void Main(string[] args)
         {
-            int i ,n, sum = 0;
+            int i, n, sum = 0;
 
             Console.Write("Syötä luku: ");
             n = Convert.ToInt32(Console.ReadLine());
