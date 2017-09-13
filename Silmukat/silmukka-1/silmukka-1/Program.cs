@@ -13,7 +13,7 @@ namespace silmukka_1
 
             if (num == 0)
             {
-                Console.Write("Tulos: {0}", num);
+                Console.Write("Tulos: 0");
             }
 
             else if (num < 0)
