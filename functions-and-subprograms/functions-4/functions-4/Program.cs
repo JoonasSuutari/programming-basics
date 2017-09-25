@@ -6,33 +6,28 @@ namespace functions_4
     {
         static void Main(string[] args)
         {
-            int i = 0;
-            int n;
-            int tulos = Testaaja(i);
+            int i, n;
+            int tulos = Testaaja(i, n);
 
             Console.ReadLine();
         }
 
-        public static int Testaaja(int i, int n, int tulos)
+        public static int Testaaja(int i, int n)
         {
-            bool isValidInput = false;
-            int[] arr = new int[10];
 
             Console.WriteLine("Syötä 10 lukua\n");
 
-            while (i < 10)
+            for (i = 0; i <= 10; i++)
             {
                 Console.WriteLine("{0}. ", i);
-                arr[i] = Convert.ToInt32(Console.ReadLine());
+                n = Convert.ToInt32(Console.ReadLine());
 
-                if (!isValidInput)
+                if (n > 0)
                 {
                     Console.Clear();
                     continue;
                 }
             }
-
-            tulos = arr[i].Max;
 
 
         }
