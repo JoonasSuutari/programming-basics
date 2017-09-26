@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace functions_4
 {
@@ -6,30 +7,40 @@ namespace functions_4
     {
         static void Main(string[] args)
         {
-            int i, n;
-            int tulos = Testaaja(i, n);
+            int i = 1;
+            int max;
+            max = Tester(i);
 
+            Console.WriteLine("Suurin luku oli {0}.", max);
             Console.ReadLine();
         }
 
-        public static int Testaaja(int i, int n)
+        public static int Tester(int i)
         {
+            int n, maxPrint = 0;
 
-            Console.WriteLine("Syötä 10 lukua\n");
+            Console.WriteLine("Syötä kymmenen lukua.");
 
-            for (i = 0; i <= 10; i++)
+            for (i = 1; i <= 10; i++)
             {
-                Console.WriteLine("{0}. ", i);
-                n = Convert.ToInt32(Console.ReadLine());
+                Console.Write("{0}. ", i);
 
-                if (n > 0)
+                string userInput = Console.ReadLine();
+
+                while ((!int.TryParse(userInput, out n)) || (n < 0))
                 {
-                    Console.Clear();
-                    continue;
+                    Console.WriteLine("Syötä positiivinen luku.");
+                    Console.Write("{0}. ", i);
+
+                    userInput = Console.ReadLine();
+                }
+
+                if (maxPrint < n)
+                {
+                    maxPrint = n;
                 }
             }
-
-
+            return maxPrint;
         }
     }
 }
