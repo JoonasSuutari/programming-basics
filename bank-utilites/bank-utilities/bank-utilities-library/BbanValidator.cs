@@ -5,31 +5,22 @@ using System.Text;
 
 namespace bank_utilities
 {
-    class Bban_validator
+    public class Bban_validator
     {
-        static void BBAN()
+        public static bool BBAN(string input, out string tilinum)
         {
-            string tilinum;
             int len;
             bool sumOfDigits;
-
-            Console.WriteLine("Syötä tilinumero: ");
-            tilinum = Console.ReadLine();
-
-            // Remove '-'
+            tilinum = input;
             tilinum = tilinum.Replace("-", "");
-            // Form machine format account number (14 digits)
-            // Check account number check digit
-
-
-
             len = tilinum.Length;
 
-            if (tilinum.Length > 14)
+
+            // BBAN testing.
+            if (tilinum.Length > 14 || tilinum.Length == 0 || !tilinum.All(Char.IsDigit))
             {
-                Console.WriteLine("Nyt tapahtui virhe. Yritä uudestaan. \n");
-                Console.WriteLine("Syötä tilinumero: ");
-                tilinum = Console.ReadLine();
+                Exception ex = new FormatException("Tilinumero oli väärässä muodossa.");
+                throw ex;
             }
             else if (tilinum.Length < 14)
             {
@@ -47,17 +38,15 @@ namespace bank_utilities
                     }
                     else
                     {
-                        Console.WriteLine("Nyt tapahtui virhe. Yritä uudestaan. \n");
-                        Console.WriteLine("Syötä tilinumero: ");
-                        tilinum = Console.ReadLine();
+                        Exception ex = new FormatException("Tilinumero oli väärässä muodossa.");
+                        throw ex;
                     }
                 }
             }
-            else
-            {
-                sumOfDigits = Mod10Check(tilinum);
-                Console.WriteLine(sumOfDigits);
-            }
+
+            sumOfDigits = Mod10Check(tilinum);
+            return sumOfDigits;
+
         }
 
         public static bool Mod10Check(string tilinum)
